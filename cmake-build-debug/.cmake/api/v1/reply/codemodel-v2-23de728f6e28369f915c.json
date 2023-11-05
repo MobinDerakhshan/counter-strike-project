@@ -1,0 +1,173 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : "."
+				},
+				{
+					"build" : "src",
+					"jsonFile" : "directory-src-Debug-b6cf2213fc5053b67c22.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src",
+					"targetIndexes" : 
+					[
+						8,
+						9
+					]
+				},
+				{
+					"build" : "test",
+					"jsonFile" : "directory-test-Debug-451c0598f41488bb20b9.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "test",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2
+					],
+					"name" : "t",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 2,
+					"id" : "AmmunitionTEST::@36f028580bb02cc8272a",
+					"jsonFile" : "target-AmmunitionTEST-Debug-e813ce863fc5232949a8.json",
+					"name" : "AmmunitionTEST",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "GunTEST::@36f028580bb02cc8272a",
+					"jsonFile" : "target-GunTEST-Debug-9798e09c22f65313a509.json",
+					"name" : "GunTEST",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "IOTEST::@36f028580bb02cc8272a",
+					"jsonFile" : "target-IOTEST-Debug-0dc3efa2c1ee2828cf0b.json",
+					"name" : "IOTEST",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "ListOfTeamTEST::@36f028580bb02cc8272a",
+					"jsonFile" : "target-ListOfTeamTEST-Debug-ca5de7b3dd58796bb1f6.json",
+					"name" : "ListOfTeamTEST",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "PlayerTEST::@36f028580bb02cc8272a",
+					"jsonFile" : "target-PlayerTEST-Debug-a74bc372f1efaf0f2e0e.json",
+					"name" : "PlayerTEST",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "RoundTEST::@36f028580bb02cc8272a",
+					"jsonFile" : "target-RoundTEST-Debug-8795772abbfdd1c8b550.json",
+					"name" : "RoundTEST",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "TeamTEST::@36f028580bb02cc8272a",
+					"jsonFile" : "target-TeamTEST-Debug-ed84637acaaf00eaf3ec.json",
+					"name" : "TeamTEST",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "TimeTEST::@36f028580bb02cc8272a",
+					"jsonFile" : "target-TimeTEST-Debug-55d80897b27f642feded.json",
+					"name" : "TimeTEST",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "main::@145eef247bfb46b6828c",
+					"jsonFile" : "target-main-Debug-3d29f1dd5d10206e61ba.json",
+					"name" : "main",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "my::@145eef247bfb46b6828c",
+					"jsonFile" : "target-my-Debug-be92c88de4cdac87a672.json",
+					"name" : "my",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/mobin/Desktop/t/cmake-build-debug",
+		"source" : "/home/mobin/Desktop/t"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 5
+	}
+}

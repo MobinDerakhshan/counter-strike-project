@@ -1,0 +1,2 @@
+/usr/bin/ar qc libgun_lib.a  CMakeFiles/gun_lib.dir/Gun.cpp.o CMakeFiles/gun_lib.dir/Pistol.cpp.o CMakeFiles/gun_lib.dir/HeavyGun.cpp.o CMakeFiles/gun_lib.dir/Ammunition.cpp.o
+/usr/bin/ranlib libgun_lib.a

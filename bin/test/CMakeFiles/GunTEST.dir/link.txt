@@ -1,0 +1,1 @@
+/usr/bin/c++   -g   CMakeFiles/GunTEST.dir/GunTest.cpp.o  -o GunTEST  /usr/local/lib/libgtest.a /usr/local/lib/libgtest_main.a ../src/libmy.a /usr/local/lib/libgtest.a -lpthread 

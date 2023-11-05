@@ -1,0 +1,1 @@
+/usr/bin/c++   -g   CMakeFiles/IOTEST.dir/IOTest.cpp.o  -o IOTEST  /usr/local/lib/libgtest.a /usr/local/lib/libgtest_main.a ../src/libmy.a /usr/local/lib/libgtest.a -lpthread 

@@ -1,0 +1,1 @@
+/usr/bin/c++   -g   CMakeFiles/PlayerTEST.dir/PlayerTest.cpp.o  -o PlayerTEST  /usr/local/lib/libgtest.a /usr/local/lib/libgtest_main.a ../src/libmy.a /usr/local/lib/libgtest.a -lpthread 

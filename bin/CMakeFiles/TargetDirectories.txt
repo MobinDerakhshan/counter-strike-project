@@ -1,0 +1,16 @@
+/home/mobin/Desktop/t/bin/CMakeFiles/rebuild_cache.dir
+/home/mobin/Desktop/t/bin/CMakeFiles/edit_cache.dir
+/home/mobin/Desktop/t/bin/src/CMakeFiles/rebuild_cache.dir
+/home/mobin/Desktop/t/bin/src/CMakeFiles/edit_cache.dir
+/home/mobin/Desktop/t/bin/src/CMakeFiles/main.dir
+/home/mobin/Desktop/t/bin/src/CMakeFiles/my.dir
+/home/mobin/Desktop/t/bin/test/CMakeFiles/ListOfTeamTEST.dir
+/home/mobin/Desktop/t/bin/test/CMakeFiles/edit_cache.dir
+/home/mobin/Desktop/t/bin/test/CMakeFiles/TeamTEST.dir
+/home/mobin/Desktop/t/bin/test/CMakeFiles/rebuild_cache.dir
+/home/mobin/Desktop/t/bin/test/CMakeFiles/RoundTEST.dir
+/home/mobin/Desktop/t/bin/test/CMakeFiles/PlayerTEST.dir
+/home/mobin/Desktop/t/bin/test/CMakeFiles/AmmunitionTEST.dir
+/home/mobin/Desktop/t/bin/test/CMakeFiles/IOTEST.dir
+/home/mobin/Desktop/t/bin/test/CMakeFiles/GunTEST.dir
+/home/mobin/Desktop/t/bin/test/CMakeFiles/TimeTEST.dir

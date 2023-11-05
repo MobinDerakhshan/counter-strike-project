@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../header/Gun.h
+string
+../header/string
+vector
+../header/vector
+
+../header/HeavyGun.h
+Gun.h
+../header/Gun.h
+
+../header/Pistol.h
+Gun.h
+../header/Gun.h
+
+/home/mobin/Desktop/t/test/GunTest.cpp
+Gun.h
+/home/mobin/Desktop/t/test/Gun.h
+HeavyGun.h
+/home/mobin/Desktop/t/test/HeavyGun.h
+Pistol.h
+/home/mobin/Desktop/t/test/Pistol.h
+gtest/gtest.h
+-
+

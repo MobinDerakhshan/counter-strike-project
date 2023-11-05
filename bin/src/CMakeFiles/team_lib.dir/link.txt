@@ -1,0 +1,2 @@
+/usr/bin/ar qc libteam_lib.a  CMakeFiles/team_lib.dir/Player.cpp.o CMakeFiles/team_lib.dir/Team.cpp.o CMakeFiles/team_lib.dir/ListOfTeam.cpp.o
+/usr/bin/ranlib libteam_lib.a

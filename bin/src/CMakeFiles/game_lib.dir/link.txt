@@ -1,0 +1,2 @@
+/usr/bin/ar qc libgame_lib.a  CMakeFiles/game_lib.dir/Game.cpp.o CMakeFiles/game_lib.dir/Round.cpp.o CMakeFiles/game_lib.dir/IO.cpp.o CMakeFiles/game_lib.dir/Time.cpp.o CMakeFiles/game_lib.dir/Configuration.cpp.o
+/usr/bin/ranlib libgame_lib.a
