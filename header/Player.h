@@ -4,39 +4,40 @@
 
 #ifndef P_PLAYER_H
 #define P_PLAYER_H
-#include <string>
+#include <memory>
 
 #include "Ammunition.h"
 #include "Time.h"
 
 class Player {
 public:
-  Player(std::string name, std::string team_name, Time t);
+  Player(std::string name, std::string team_name, int number_in_team,
+         const Time &t);
 
-  std::string get_name();
+  std::string get_name() const;
 
-  std::string get_team_name();
+  std::string get_team_name() const;
 
-  int get_health();
+  int get_health() const;
 
-  int get_money();
+  int get_money() const;
 
-  int get_kill();
+  int get_kill() const;
 
-  int get_death();
+  int get_death() const;
 
-  int get_win_number();
+  int get_win_number() const;
 
-  int get_lose_number();
+  int get_lose_number() const;
 
-  int get_number_in_team();
+  int get_number_in_team() const;
 
   /**
    *
    * @param gun_type
-   * @return gun with type "gun_type" if there is, null otherwise
+   * @return shared_ptr gun with type "gun_type" if there is, empty shared_ptr otherwise
    */
-  Gun &get_gun(std::string gun_type);
+  std::shared_ptr<Weapon> get_gun(gun_type gun_type);
 
   void set_health(int health);
 
@@ -44,7 +45,7 @@ public:
 
   void set_money(int money);
 
-  void set_kill(int kill);
+  void increment_kill();
 
   void set_death(int death);
 
@@ -54,7 +55,7 @@ public:
 
   void set_number_in_team(int number);
 
-  void add_gun(Gun &gun);
+  void add_gun(std::shared_ptr<Weapon> &gun);
 
   /***
    * @brief decrease money and add gun
@@ -64,21 +65,22 @@ public:
    *
    * @param gun
    */
-  void buy(Gun &gun);
+  void buy(std::shared_ptr<Weapon> gun);
 
   /**
    * @brief increase money and kill number
    *
-   * @param gun_type string of type of gun that player use
+   * @param gun_type
    */
-  void kill_by(std::string gun_type);
+  void kill_by(gun_type gun_type);
 
   /**
    * @brief decrease health and run die function if damage kill player
    *
    * @param damage
+   * @return false if player is alive, true otherwise
    */
-  void attacked(int damage);
+  bool attacked(int damage);
 
   /**
    * @brief clear ammunition and increase death number
@@ -100,13 +102,13 @@ public:
    * @param gun_type
    * @return true if ammunition is full of this type of gun
    */
-  bool is_full(std::string gun_type);
+  bool is_full(gun_type gun_type);
 
   /**
    *
    * @return true if health was 0
    */
-  bool is_alive();
+  bool is_alive() const;
 
   /**
    * @brief just compare name of players
@@ -114,7 +116,7 @@ public:
    * @param player
    * @return
    */
-  bool operator==(Player player);
+  bool operator==(const Player &player) const;
 
   /**
    * @brief just compare name of players
@@ -122,23 +124,7 @@ public:
    * @param player
    * @return
    */
-  bool operator==(const Player player) const;
-
-  /**
-   * @brief just compare name of players
-   *
-   * @param player
-   * @return
-   */
-  bool operator!=(Player player);
-
-  /**
-   * @brief just compare name of players
-   *
-   * @param player
-   * @return
-   */
-  bool operator!=(const Player player) const;
+  bool operator!=(const Player &player) const;
 
   /**
    * compare kill number, death number, number of players
@@ -147,9 +133,7 @@ public:
    * @param p2
    * @return
    */
-  static bool compare(Player p1, Player p2);
-
-  static Player null;
+  static bool compare(const Player &p1, const Player &p2);
 
 private:
   std::string name;

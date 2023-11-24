@@ -9,9 +9,7 @@ set(team_lib_files
         Team.cpp
         ListOfTeam.cpp)
 set(gun_lib_files
-        Gun.cpp
-        Pistol.cpp
-        HeavyGun.cpp
+        Weapon.cpp
         Ammunition.cpp
 )
 

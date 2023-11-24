@@ -3,8 +3,10 @@
 //
 
 #include "Team.h"
+#include "Configuration.h"
 
-Team::Team(std::string name, std::vector<Gun> authorizedGuns) : name(name) {
+Team::Team(const std::string &name, std::vector<Weapon> authorizedGuns)
+    : name(name) {
   add_gun(authorizedGuns);
 }
 
@@ -26,31 +28,41 @@ void Team::restart() {
   }
 }
 
-void Team::add_player(std::string name, Time t) {
-  list_of_players.emplace_back(name, get_name(), t);
+void Team::add_player(const std::string &player_name, const Time &t) {
   int number_of_player = list_of_players.size() - 1;
-  list_of_players[number_of_player].set_number_in_team(number_of_player);
+  list_of_players.emplace_back(player_name, get_name(), number_of_player, t);
 }
 
-Player &Team::get_player(std::string player_name) {
+bool Team::player_exists(std::string player_name) {
+  bool exists = false;
+  for (Player &i : list_of_players) {
+    if (i.get_name() == player_name) {
+      exists = true;
+      break;
+    }
+  }
+  return exists;
+}
+
+Player &Team::get_player(const std::string &player_name) {
   for (Player &i : list_of_players) {
     if (i.get_name() == player_name) {
       return i;
     }
   }
-  return Player::null;
+  throw std::runtime_error("wrong get play");
 }
 
 Player &Team::get_player(int i) {
   if (i < get_number_of_players()) {
     return list_of_players[i];
   } else {
-    return Player::null;
+    throw std::runtime_error(" message");
   }
 }
 
 bool Team::all_die() {
-  if (list_of_players.size() == 0) {
+  if (list_of_players.empty()) {
     return false;
   }
   for (Player &i : list_of_players) {
@@ -74,20 +86,14 @@ bool Team::is_full() {
          Configuration::get_instance()->max_player_for_each_team;
 }
 
-void Team::add_gun(std::vector<Gun> &guns) {
-  for (Gun &i : guns) {
-    list_of_gun.push_back(i);
-  }
-}
+void Team::add_gun(std::vector<Weapon> &guns) { list_of_gun = std::move(guns); }
 
-Gun &Team::get_gun(std::string name) {
-  for (Gun &i : list_of_gun) {
+std::shared_ptr<Weapon> Team::get_gun(const std::string &name) {
+  std::shared_ptr<Weapon> gun;
+  for (Weapon &i : list_of_gun) {
     if (i.name == name) {
-      return i;
+      gun = std::make_shared<Weapon>(i);
     }
   }
-  return Gun::null;
+  return gun;
 }
-
-std::vector<Gun> i = {Gun::null};
-Team Team::null = Team("سستشسسعهذذذ هذبخهللذقهلذخهاسقلل", i);

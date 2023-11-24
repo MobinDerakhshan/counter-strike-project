@@ -8,9 +8,6 @@ int IO::get_number_of_commands() {
   std::string s;
   int r;
   std::cin >> s >> r;
-  if (s != "ROUND") {
-    // throw()
-  }
   return r;
 }
 
@@ -22,7 +19,7 @@ std::string IO::get_command_type() {
 
 void IO::command_output(std::string s) { std::cout << s << "\n"; }
 
-void IO::print_winner(std::string winner) { std::cout << winner << " won\n"; }
+void IO::print_winner(Team winner) { std::cout << winner.get_name() << " won\n"; }
 
 int IO::get_number_of_rounds() {
   int r;

@@ -4,35 +4,36 @@
 
 #include "Team.h"
 #include <gtest/gtest.h>
+#include "Configuration.h"
 
 TEST(Team, basics) {
   Time t(0, 0, 33);
-  HeavyGun g1("gun", 9, 8, 3);
-  Pistol g2("gun2", 5, 3, 8);
-  Pistol g3("gun3", 8, 2, 11);
-  std::vector<Gun> gun = {g1, g2, g3};
+  Weapon g1("gun", heavy, 9, 8, 3);
+  Weapon g2("gun2", pistol, 5, 3, 8);
+  Weapon g3("gun3", pistol, 8, 2, 11);
+  std::vector<Weapon> gun = {g1, g2, g3};
 
   Team t1("team", gun);
 
   EXPECT_EQ(t1.get_name(), "team");
   EXPECT_EQ(t1.get_number_of_players(), 0);
-  EXPECT_EQ(t1.get_gun("gun") == g1, true);
-  EXPECT_EQ(t1.get_gun("gun2") == g2, true);
-  EXPECT_EQ(t1.get_gun("gun3") == g3, true);
+  EXPECT_TRUE(*t1.get_gun("gun") == g1);
+  EXPECT_TRUE(*t1.get_gun("gun2") == g2);
+  EXPECT_TRUE(*t1.get_gun("gun3") == g3);
 
-  Player p1("name", "team", t);
-  Player p2("name2", "team", t);
+  Player p1("name", "team", 0, t);
+  Player p2("name2", "team", 1, t);
   t1.add_player("name", t);
   t1.add_player("name2", t);
 
-  EXPECT_EQ(t1.get_player("name") == p1, true);
-  EXPECT_EQ(t1.get_player("name2") == p2, true);
+  EXPECT_TRUE(t1.get_player("name") == p1);
+  EXPECT_TRUE(t1.get_player("name2") == p2);
 }
 
 // deq
 TEST(Team, winOrLose) {
   Time t(0, 0, 33);
-  std::vector<Gun> gun;
+  std::vector<Weapon> gun;
 
   Team t1("team", gun);
 
@@ -60,7 +61,7 @@ TEST(Team, winOrLose) {
 
 TEST(Team, restart) {
   Time t(0, 0, 33);
-  std::vector<Gun> gun;
+  std::vector<Weapon> gun;
 
   Team t1("team", gun);
 
@@ -80,7 +81,7 @@ TEST(Team, restart) {
 
 TEST(Team, sortPlayer) {
   Time t(0, 0, 33);
-  std::vector<Gun> gun;
+  std::vector<Weapon> gun;
 
   Team t1("team", gun);
 
@@ -94,15 +95,31 @@ TEST(Team, sortPlayer) {
   Player p3 = t1.get_player("name3");
   Player p4 = t1.get_player("name4");
   Player p5 = t1.get_player("name5");
-  t1.get_player("name").set_kill(2);
+
+  //set kill 2
+  for(int i=0; i<2; i++){
+      t1.get_player("name").increment_kill();
+  }
   t1.get_player("name").set_death(3);
-  t1.get_player("name2").set_kill(2);
+  //set kill 2
+  for(int i=0; i<2; i++){
+      t1.get_player("name2").increment_kill();
+  }
   t1.get_player("name2").set_death(3);
-  t1.get_player("name3").set_kill(3);
+  //set kill 3
+  for(int i=0; i<3; i++){
+      t1.get_player("name3").increment_kill();
+  }
   t1.get_player("name3").set_death(7);
-  t1.get_player("name4").set_kill(2);
+  //set kill 2
+  for(int i=0; i<2; i++){
+      t1.get_player("name4").increment_kill();
+  }
   t1.get_player("name4").set_death(5);
-  t1.get_player("name5").set_kill(7);
+  //set kill 7
+    for (int i = 0; i < 7; ++i) {
+        t1.get_player("name5").increment_kill();
+    }
   t1.get_player("name5").set_death(0);
 
   t1.sort_player();
@@ -116,7 +133,7 @@ TEST(Team, sortPlayer) {
 
 TEST(Team, all_die_and_is_full) {
   Time t(0, 0, 33);
-  std::vector<Gun> gun;
+  std::vector<Weapon> gun;
 
   Team t1("team", gun);
 

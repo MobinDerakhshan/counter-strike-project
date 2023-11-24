@@ -4,61 +4,69 @@
 
 #include "ListOfTeam.h"
 
-void ListOfTeam::add_team(std::string team_name,
-                          std::vector<Gun> guns_of_team) {
-  list_of_team.emplace_back(team_name, guns_of_team);
-}
+void ListOfTeam::add_team(Team &team) { list_of_teams.push_back(team); }
 
-int ListOfTeam::get_number_of_team() { return list_of_team.size(); }
+int ListOfTeam::get_number_of_team() { return list_of_teams.size(); }
 
-Team &ListOfTeam::get_team(std::string team_name) {
-  for (Team &i : list_of_team) {
+Team &ListOfTeam::get_team(const std::string &team_name) {
+  for (Team &i : list_of_teams) {
     if (i.get_name() == team_name) {
       return i;
     }
   }
-  return Team::null;
+  throw std::runtime_error(" invalid team name");
 }
 
 Team &ListOfTeam::get_team(int i) {
-  if (get_number_of_team() > i - 1) {
-    return list_of_team[i];
+  if (get_number_of_team() > i) {
+    return list_of_teams[i];
   } else {
-    return Team::null;
+    throw std::runtime_error(" invalid team number");
   }
 }
 
-Player &ListOfTeam::get_player(std::string name) {
-  for (Team &i : list_of_team) {
-    if (i.get_player(name) != Player::null) {
-      return i.get_player(name);
+std::reference_wrapper<Player> ListOfTeam::get_player(const std::string &name) {
+  for (Team &i : list_of_teams) {
+    if (i.player_exists(name)) {
+      return std::reference_wrapper<Player>(i.get_player(name));
     }
   }
-  return Player::null;
+  throw std::runtime_error("This player does not exist");
+}
+
+bool ListOfTeam::player_exist(const std::string &player_name) {
+  bool exist = false;
+  for (Team &i : list_of_teams) {
+    if (i.player_exists(player_name)) {
+      exist = true;
+      break;
+    }
+  }
+  return exist;
 }
 
 void ListOfTeam::restart() {
-  for (Team &i : list_of_team) {
+  for (Team &i : list_of_teams) {
     i.restart();
   }
 }
 
-// if all die first get_team will win
-std::string ListOfTeam::determine_winner() {
-  std::string winner;
+// if all die first team will win
+Team &ListOfTeam::determine_winner() {
+  Team &winner = list_of_teams[0];
   int in_the_game = 0;
-  for (int i = 0; i < list_of_team.size(); i++) {
-    if (!list_of_team[i].all_die()) {
+  for (int i = 0; i < list_of_teams.size(); i++) {
+    if (!list_of_teams[i].all_die()) {
       in_the_game = i;
       break;
     }
   }
-  for (int i = 0; i < list_of_team.size(); i++) {
+  for (int i = 0; i < list_of_teams.size(); i++) {
     if (i == in_the_game) {
-      list_of_team[i].win();
-      winner = list_of_team[i].get_name();
+      list_of_teams[i].win();
+      winner = list_of_teams[i];
     } else {
-      list_of_team[i].lose();
+      list_of_teams[i].lose();
     }
   }
   return winner;

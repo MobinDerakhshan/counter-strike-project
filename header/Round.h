@@ -4,6 +4,8 @@
 
 #ifndef P_ROUND_H
 #define P_ROUND_H
+#include <variant>
+#include <memory>
 
 #include "Configuration.h"
 #include "IO.h"
@@ -35,7 +37,7 @@ public:
    * @param t
    * @return
    */
-  string add_user(string name, string team_name, Time &t);
+  string add_user_command(const string& name, const string& team_name,const Time &t);
 
   /**
    * @brief get money of player named "name"
@@ -43,7 +45,7 @@ public:
    * @param name
    * @return
    */
-  string get_money(string name);
+  string get_money_command(const string& name);
 
   /**
    * @brief get health of player maned "name"
@@ -51,35 +53,35 @@ public:
    * @param name
    * @return
    */
-  string get_health(string name);
+  string get_health_command(const string& name);
 
   /**
-   * @brief buy gun named "gun" for player named "name"
+   * @brief buy_command gun named "gun" for player named "name"
    *
    * @param name
    * @param gun
    * @param t
    * @return
    */
-  string buy(string name, string gun, Time &t);
+  string buy_command(const string& name, const string& gun, Time &t);
 
   /**
    * @brief player named "attacker" attack another player named "attacked" with
    * his gun from type of "gun_type"
    *
-   * @param attacker
-   * @param attacked
+   * @param name_of_attacker
+   * @param name_of_attacked
    * @param gun_type
    * @return
    */
-  string tap(string attacker, string attacked, string gun_type);
+  string tap_command(const string& name_of_attacker, const string& name_of_attacked, string gun_type);
 
   /**
    * @brief sort player and then return score board
    *
    * @return
    */
-  string score_board();
+  string score_board_command();
 
 private:
   ListOfTeam &listOfTeam;

@@ -3,6 +3,7 @@
 //
 #include <gtest/gtest.h>
 #include <sstream>
+#include "Team.h"
 #include "IO.h"
 
 TEST(IO, get_command_number) {
@@ -34,7 +35,8 @@ TEST(IO, print_winner) {
   std::streambuf *originalCout = std::cout.rdbuf();
   std::cout.rdbuf(outputStream.rdbuf());
 
-  IO::print_winner("team");
+  Team team("team",vector<Weapon>{});
+  IO::print_winner(team);
 
   std::string output = outputStream.str();
   std::string expectedOutput = "team won\n";
@@ -46,10 +48,10 @@ TEST(IO, command_output) {
   std::streambuf *originalCout = std::cout.rdbuf();
   std::cout.rdbuf(outputStream.rdbuf());
 
-  IO::print_winner("kjashhdfjalkshfj");
+  IO::command_output("kjashhdfjalkshfj");
 
   std::string output = outputStream.str();
-  std::string expectedOutput = "kjashhdfjalkshfj won\n";
+  std::string expectedOutput = "kjashhdfjalkshfj\n";
   EXPECT_EQ(output, expectedOutput);
 }
 

@@ -6,6 +6,7 @@
 #define P_INPUT_H
 #include <iostream>
 
+#include "Team.h"
 #include "Time.h"
 
 using namespace std;
@@ -23,7 +24,7 @@ public:
     get_command_data(args...);
   }
   static void command_output(std::string s);
-  static void print_winner(std::string winner);
+  static void print_winner(Team winner);
 
   static int get_number_of_rounds();
 };

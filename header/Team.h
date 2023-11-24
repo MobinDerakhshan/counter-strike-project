@@ -5,13 +5,15 @@
 #ifndef P_TEAM_H
 #define P_TEAM_H
 #include <algorithm>
+#include <exception>
+#include <memory>
 #include <vector>
 
 #include "Player.h"
 
 class Team {
 public:
-  Team(std::string name, std::vector<Gun> authorizedGuns);
+  Team(const std::string &name, std::vector<Weapon> authorizedGuns);
 
   std::string get_name();
 
@@ -20,40 +22,49 @@ public:
   /**
    *
    * @param player_name
-   * @return player named "player_name" if there is in the team, null otherwise
+   * @return true if player exists in the team, false otherwise
    */
-  Player &get_player(std::string player_name);
+  bool player_exists(std::string player_name);
 
   /**
+   * make sure this player exists before using
+   *
+   * @param player_name
+   * @return player named "player_name" if there is in the team, runtime error otherwise
+   */
+  Player &get_player(const std::string &player_name);
+
+  /**
+   * make sure this player exists before using
    *
    * @param i
-   * @return player with index i if there is, null otherwise
+   * @return player with index i if there is, runtime error otherwise
    */
   Player &get_player(int i);
 
   /**
    *
    * @param name
-   * @return gun if allowed for this team, null otherwise
+   * @return gun if allowed for this team, empty shared_ptr otherwise
    */
-  Gun &get_gun(std::string name);
+  std::shared_ptr<Weapon> get_gun(const std::string &name);
 
   /**
-   * @brief add player named "name" and set number for player
+   * @brief add player named "player_name" and set number for player
    *
    * number of player is assigned based of order of entry
    *
-   * @param name
+   * @param player_name
    * @param t
    */
-  void add_player(std::string name, Time t);
+  void add_player(const std::string &player_name, const Time &t);
 
   /**
    * @brief add guns to the list of gun
    *
    * @param guns
    */
-  void add_gun(std::vector<Gun> &guns);
+  void add_gun(std::vector<Weapon> &guns);
 
   /**
    * @brief run win function for all player in the team
@@ -88,12 +99,10 @@ public:
    */
   bool is_full();
 
-  static Team null;
-
 private:
   std::string name;
   std::vector<Player> list_of_players;
-  std::vector<Gun> list_of_gun;
+  std::vector<Weapon> list_of_gun;
 };
 
 #endif // P_TEAM_H

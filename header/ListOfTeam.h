@@ -5,40 +5,63 @@
 #ifndef P_LISTOFTEAM_H
 #define P_LISTOFTEAM_H
 #include <vector>
+#include <exception>
 
 #include "Team.h"
 
 class ListOfTeam {
 public:
-  /**
+  /***
+   *
    * @brief add new team to list of team vector
    *
-   * @param team_name
-   * @param guns_of_team
+   * @param team
    */
-  void add_team(std::string team_name, std::vector<Gun> guns_of_team);
+  void add_team(Team &team);
 
   /***
+   * @brief determine for each team win or lose and return winner team
+   *
+   * winner is a team that has one player alive
+   * if two team have player alive team with less index is winner
+   *
+   * @return name of winner team
+   */
+  Team &determine_winner();
+
+  /***
+   * make sure this team exists before using
    *
    * @param team_name name of team
-   * @return team if there is, null otherwise
+   * @return team if there is, runtime error otherwise
    */
-  Team &get_team(std::string team_name);
+
+  Team &get_team(const std::string &team_name);
 
   /***
+   * make sure this team exists before using
    *
    * @param i index of team
-   * @return team if there is, null if i was out of range
+   * @return team if there is, runtime error otherwise
    */
   Team &get_team(int i);
 
   /***
-   *@brief check all team to find player
+   * @brief check all team to find player
    *
-   * @param name name of player
-   * @return player if there is, null otherwise
+   * make sure this team exists before using
+   *
+   * @param player_name
+   * @return player if there is, runtime error otherwise
    */
-  Player &get_player(std::string player_name);
+  std::reference_wrapper<Player> get_player(const std::string& player_name);
+
+  /**
+   *
+   * @param player_name
+   * @return true if player exist in the game, false otherwise
+   */
+  bool player_exist(const std::string &player_name);
 
   /**
    *
@@ -53,18 +76,9 @@ public:
    */
   void restart();
 
-  /***
-   * @brief determine for each team win or lose and return name of winner team
-   *
-   * winner is a team that has one player alive
-   * if two team have player alive team with less index is winner
-   *
-   * @return name of winner team
-   */
-  std::string determine_winner();
 
 private:
-  std::vector<Team> list_of_team;
+  std::vector<Team> list_of_teams;
 };
 
 #endif // P_LISTOFTEAM_H

@@ -7,8 +7,8 @@ target_link_libraries(TimeTEST GTest::gtest GTest::gtest_main my)
 add_executable(IOTEST IOTest.cpp)
 target_link_libraries(IOTEST GTest::gtest GTest::gtest_main my)
 
-add_executable(GunTEST GunTest.cpp)
-target_link_libraries(GunTEST GTest::gtest GTest::gtest_main my)
+add_executable(WeaponTEST WeaponTest.cpp)
+target_link_libraries(WeaponTEST GTest::gtest GTest::gtest_main my)
 
 add_executable(AmmunitionTEST AmmunitionTest.cpp)
 target_link_libraries(AmmunitionTEST GTest::gtest GTest::gtest_main my)
@@ -27,7 +27,7 @@ target_link_libraries(ListOfTeamTEST GTest::gtest GTest::gtest_main my)
 
 add_test(MyTest 
 	TimeTEST 
-	GunTEST
+	WeaponTEST
 	AmmunitionTEST 
 	PlayerTEST 
 	TeamTEST 

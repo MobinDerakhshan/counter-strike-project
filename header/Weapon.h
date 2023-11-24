@@ -7,16 +7,22 @@
 #include "string"
 #include "vector"
 
-class Gun {
+enum gun_type { heavy, pistol, cold_weapon};
+
+class Weapon {
 public:
-  Gun(std::string name, int price, int damage, int kill_reward,
-      bool need_to_buy);
+  Weapon(std::string name, gun_type gunType, int price, int damage,
+         int kill_reward);
   /**
    *
    * @return "heavy" if gun is a HeavyGun, "pistol" if gun is a Pistol, name of
    * gun otherwise
    */
-  virtual std::string get_type();
+  gun_type get_type();
+
+  static gun_type string_to_type(std::string s);
+
+  static std::string type_to_string(gun_type type);
 
   /**
    * @brief compare name, price, damage, kill, reward, need_to_buy and type
@@ -24,17 +30,14 @@ public:
    * @param g
    * @return
    */
-  bool operator==(Gun g);
-  bool operator==(const Gun g) const;
+  bool operator==(Weapon g);
+  bool operator==(const Weapon g) const;
 
   std::string name;
+  gun_type type;
   int price;
   int damage;
   int kill_reward;
-  std::string type;
-  bool need_to_buy;
-
-  static Gun null;
 };
 
 #endif // P_GUN_H

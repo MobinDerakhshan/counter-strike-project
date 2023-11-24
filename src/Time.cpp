@@ -5,47 +5,23 @@
 #include "Time.h"
 
 Time::Time(int mm, int ss, int ttt) {
-  this->mm = mm;
-  this->ss = ss;
-  this->ttt = ttt;
+  this->minute = mm;
+  this->second = ss;
+  this->millisecond = ttt;
 }
 
 void Time::set(int mm, int ss, int ttt) {
-  this->mm = mm;
-  this->ss = ss;
-  this->ttt = ttt;
+  this->minute = mm;
+  this->second = ss;
+  this->millisecond = ttt;
 }
 
-bool Time::operator<(Time t1) {
-  if (this->mm < t1.mm) {
+bool Time::operator<(const Time &t1) const {
+  if (this->minute < t1.minute) {
     return true;
-  } else if (this->mm == t1.mm && this->ss < t1.ss) {
+  } else if (this->minute == t1.minute && this->second < t1.second) {
     return true;
-  } else if (this->mm == t1.mm && this->ss == t1.ss && this->ttt < t1.ttt) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
-bool Time::operator<=(Time t1) {
-  if (this->mm < t1.mm) {
-    return true;
-  } else if (this->mm == t1.mm && this->ss < t1.ss) {
-    return true;
-  } else if (this->mm == t1.mm && this->ss == t1.ss && this->ttt <= t1.ttt) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
-bool Time::operator<(Time t1) const {
-  if (this->mm < t1.mm) {
-    return true;
-  } else if (this->mm == t1.mm && this->ss < t1.ss) {
-    return true;
-  } else if (this->mm == t1.mm && this->ss == t1.ss && this->ttt < t1.ttt) {
+  } else if (this->minute == t1.minute && this->second == t1.second && this->millisecond < t1.millisecond) {
     return true;
   } else {
     return false;
@@ -53,26 +29,26 @@ bool Time::operator<(Time t1) const {
 }
 
 bool Time::operator==(const Time &t1) const {
-  if (this->mm == t1.mm && this->ss == t1.ss && this->ttt == t1.ttt) {
+  if (this->minute == t1.minute && this->second == t1.second && this->millisecond == t1.millisecond) {
     return true;
   } else {
     return false;
   }
 }
 
-bool Time::operator<=(Time t1) const {
-  if (this->mm < t1.mm) {
+bool Time::operator<=(const Time &t1) const {
+  if (this->minute < t1.minute) {
     return true;
-  } else if (this->mm == t1.mm && this->ss < t1.ss) {
+  } else if (this->minute == t1.minute && this->second < t1.second) {
     return true;
-  } else if (this->mm == t1.mm && this->ss == t1.ss && this->ttt <= t1.ttt) {
+  } else if (this->minute == t1.minute && this->second == t1.second && this->millisecond <= t1.millisecond) {
     return true;
   } else {
     return false;
   }
 }
 
-std::istream &operator>>(std::istream &in, Time &time) {
+void operator>>(std::istream &in, Time &time) {
 
   std::string time_str;
   std::cin >> time_str;
